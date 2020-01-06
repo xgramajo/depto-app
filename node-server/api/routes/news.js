@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const secured = require('../lib/middleware/secured');
 //para poder crear los ids
 const mongoose = require("mongoose");
 

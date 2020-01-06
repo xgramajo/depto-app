@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const secured = require('../lib/middleware/secured');
 //para poder crear los ids
 const mongoose = require("mongoose");
 
 const Apartment = require("../models/apartment");
 
-router.get("/apartments", secured(), (req, res, next) => {
+router.get("/apartments", (req, res, next) => {
 
     //pasando find() sin parametros, trae todo lo de la base
     Apartment.find()
