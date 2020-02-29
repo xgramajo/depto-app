@@ -1,9 +1,6 @@
-const express = require("express");
-//morgan: libreria para logs
-const morgan = require("morgan");
-//libreria para parsear los body de las request
-const bodyParser = require("body-parser");
-//libreria para manejar MongoDB
+const express = require("express"); //morgan: libreria para logs
+const morgan = require("morgan"); //libreria para parsear los body de las request
+const bodyParser = require("body-parser"); //libreria para manejar MongoDB
 const mongoose = require("mongoose");
 
 const app = express();
@@ -71,8 +68,10 @@ mongoose.connect(
     .catch(e => console.log("DB error:", e));
 
 app.use("/", indexRoutes);
-app.use("/", checkJwt, apartmentsRoutes);
-app.use("/", checkJwt, checkScopes, newsRoutes);
+//app.use("/", checkJwt, apartmentsRoutes);
+app.use("/", apartmentsRoutes);
+//app.use("/", checkJwt, checkScopes, newsRoutes);
+app.use("/", newsRoutes);
 
 //esta funcion se triggerea en caso de error en algun path
 app.use((req, res, next) => {

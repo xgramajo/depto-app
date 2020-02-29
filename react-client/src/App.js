@@ -1,26 +1,18 @@
 import React from 'react';
-import Navigation from './components/Navigation';
 import Main from './components/Main';
+import NavBar from "./components/NavBar";
 
-class App extends React.Component {
-
-  constructor() {
-    super();
-    this.state = { }
-  }
-  //va a correr la primera vez, aunque se renderee muchas veces, solo se corre la primera.
-  componentDidMount() {
-
-  }
-
-  render() {
-    
-    return (
+function App() {
+  return (
+    <div className="App">
+      <header>
+        <NavBar />
+      </header>
       <div className="app">
-        <Navigation />
         <Main />
       </div>
-    );
-  }
+    </div>
+  );
 }
+
 export default App;
