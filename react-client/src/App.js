@@ -1,12 +1,12 @@
 import React from 'react';
 import Main from './components/Main';
-import NavBar from "./components/NavBar";
+import AppBar from "./components/AppBar";
 
 function App() {
   return (
     <div className="App">
       <header>
-        <NavBar />
+        <AppBar />
       </header>
       <div className="app">
         <Main />

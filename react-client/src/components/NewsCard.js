@@ -41,7 +41,7 @@ class NewsCard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div align="center">
                 <Typography variant="subtitle1">List of news</Typography>
                 {this.state.news.map((newsItem) => (
                     <Card className='card' key={newsItem._id}>
@@ -56,7 +56,7 @@ class NewsCard extends React.Component {
                                 {newsItem.date}
                             </Typography>
                             <CardActions>
-                                <Button size="small" type="submit" value="Submit" onClick={() => { this.deleteNews(newsItem._id) }}>Borrar</Button>
+                                <Button variant="outlined" size="small" type="submit" value="Submit" onClick={() => { this.deleteNews(newsItem._id) }}>Borrar</Button>
                             </CardActions>
                         </CardContent>
                     </Card>

@@ -1,4 +1,5 @@
 import React from "react";
+import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -51,13 +52,13 @@ class NewsForm extends React.Component {
     render() {
         return (
             <div>
-                <form noValidate autoComplete="off">
-                    <TextField id="standard-title" type="text" label="Titulo" name="title" onChange={this.handleInputChange} />
-                    <br />
-                    <TextField id="standard-description" type="text" label="Descripción" name="description" onChange={this.handleInputChange} />
+                <Box align="center">
+                    <TextField id="standard-title" type="text" label="Titulo" name="title" required="true" autoComplete="off" onChange={this.handleInputChange} />
                     <br /><br />
-                    <Button variant="outlined" type="submit" value="Submit" onClick={() => {this.postNews()}} >Publicar</Button>
-                </form>
+                    <TextField id="standard-description" variant="outlined" label="Descripción" placeholder="Descripción" margin="normal" multiline="true" required="true" autoComplete="off" onChange={this.handleInputChange} />
+                    <br /><br />
+                    <Button variant="outlined" type="submit" value="Submit" onClick={() => {this.postNews(); console.log("Publicado")}} >Publicar</Button>
+                </Box>
             </div>
         )
     }
