@@ -9,33 +9,6 @@ const apartmentsRoutes = require("./api/routes/apartments");
 const newsRoutes = require("./api/routes/news");
 const indexRoutes = require("./api/routes/index");
 
-//Auth0 API config
-const jwt = require('express-jwt');
-const jwtAuthz = require('express-jwt-authz');
-const jwksRsa = require('jwks-rsa');
-
-// Authentication middleware. When used, the
-// Access Token must exist and be verified against
-// the Auth0 JSON Web Key Set
-const checkJwt = jwt({
-    // Dynamically provide a signing key
-    // based on the kid in the header and 
-    // the signing keys provided by the JWKS endpoint.
-    secret: jwksRsa.expressJwtSecret({
-      cache: true,
-      rateLimit: true,
-      jwksRequestsPerMinute: 5,
-      jwksUri: process.env.AUTH0_API_jwksUri
-    }),
-  
-    // Validate the audience and the issuer.
-    audience: process.env.AUTH0_API_AUDIENCE,
-    issuer: process.env.AUTH0_API_USSUER,
-    algorithms: ['RS256']
-  });
-
-const checkScopes = jwtAuthz([ 'read:messages' ]);
-
 //aplicar las librerias a las request
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -68,9 +41,7 @@ mongoose.connect(
     .catch(e => console.log("DB error:", e));
 
 app.use("/", indexRoutes);
-//app.use("/", checkJwt, apartmentsRoutes);
 app.use("/", apartmentsRoutes);
-//app.use("/", checkJwt, checkScopes, newsRoutes);
 app.use("/", newsRoutes);
 
 //esta funcion se triggerea en caso de error en algun path
